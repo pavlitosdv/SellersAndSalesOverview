@@ -1,0 +1,47 @@
+﻿@model Models.SaleViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Sale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Sale.TransactionValue" class="control-label"></label>
+                <input type="number" asp-for="Sale.TransactionValue" class="form-control" />
+                <span asp-validation-for="Sale.TransactionValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sale.DateOfSale" class="control-label"></label>
+                <input type="date" asp-for="Sale.DateOfSale" class="form-control" />
+                <span asp-validation-for="Sale.DateOfSale" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">              
+
+                @Html.DropDownListFor(m => m.Sale.SellerId, Model.Sellers, "-Select a Seller",
+               new { @class = "form-control" })
+                <span asp-validation-for="Sale.SellerId" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

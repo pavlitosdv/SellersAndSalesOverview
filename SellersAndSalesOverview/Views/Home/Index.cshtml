@@ -1,0 +1,43 @@
+﻿@model Models.FrontPageViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <br/>
+    <h4> Brief Overview </h4>
+</div>
+
+
+<br/>
+<br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSellers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SumOfAllSales)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.TotalSellers)
+            </td>
+
+            <td>
+                @{ var sum = Model.SumOfAllSales.ToString("F");}
+                @Html.DisplayFor(model => sum)
+            </td>
+        </tr>
+    </tbody>
+</table>

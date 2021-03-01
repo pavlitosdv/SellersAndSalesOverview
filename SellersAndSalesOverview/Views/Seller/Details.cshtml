@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Models.SellerViewModel>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Seller's Detail</h1>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+
+<div>
+
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seller.FullName)
+        </dt>
+        @foreach (var item in Model)
+        {
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => item.Seller.FullName)
+            </dd>
+            break;
+        }
+
+    </dl>
+</div>
+
+<h6>Seller's overview of current year @DateTime.Now.Year </h6>
+
+<div>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Month)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Commission)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @item.Month
+                    </td>
+
+                    <td>
+                        @item.Commission.ToString("F")
+                    </td>
+
+                    <td>
+                        @item.Total.ToString("F")
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+
+
